@@ -4,6 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+
+
+# Network Manager Applet
+exec nm-applet
+exec blueman-applet
+
 input "7247:72:SIGMACHIP_Usb_Mouse" {
 	pointer_accel 0.7
 	accel_profile flat
@@ -18,8 +25,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # brightness control
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +3%
+bindsym XF86MonBrightnessDown exec brightnessctl set 3%-
 
 input "type:pointer" accel_profile flat
 
@@ -239,13 +246,14 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	
+    workspace_buttons yes	
     position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d /\ %I:%M:%S ';do sleep 1; done
+    status_command while date +' %I:%M:%S (=^_^=) %Y-%m-%d ';do sleep 1; done
  
+
     
 colors {
         statusline #ffffff
